@@ -2,8 +2,8 @@ require("dotenv").config()
 require("colors")
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001
-
 const IS_TESTING = process.env.NODE_ENV === "test"
+const SECRET_KEY = process.env.SECRET_KEY ? process.env.SECRET_KEY : "DFJK123"
 
 function getDatabaseUri() {
   const dbUser = process.env.DATABASE_USER || "postgres"
@@ -13,6 +13,7 @@ function getDatabaseUri() {
   const dbTestName = process.env.DATABASE_TEST_NAME || "auth_starter_test"
   const dbProdName = process.env.DATABASE_NAME || "auth_starter"
   const dbName = process.env.NODE_ENV === "test" ? dbTestName : dbProdName
+
 
   return process.env.DATABASE_URL || `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`
 }
@@ -30,6 +31,7 @@ console.log("---")
 module.exports = {
   PORT,
   IS_TESTING,
+  SECRET_KEY,
   BCRYPT_WORK_FACTOR,
   getDatabaseUri,
 }

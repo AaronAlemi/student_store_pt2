@@ -1,7 +1,9 @@
 import ProductCard from "../ProductCard/ProductCard"
+import axios from "axios"
 import "./ProductGrid.css"
 
-export default function ProductGrid({ addToCart, removeFromCart, getQuantityOfItemInCart, products = [] }) {
+
+export default function ProductGrid({ addToCart, removeFromCart, getQuantityOfItemInCart, products = [axios.get("http://localhost:3001/store")] }) {
   return (
     <div id="Buy" className="ProductGrid">
       <div className="content">
